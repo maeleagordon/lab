@@ -1,3 +1,4 @@
+# Decoder function added by Maria Herreros (Period 7-8 Section with TA Teresa Vu)
 def encode(encode_password):
     res = ""
     for num in password:
@@ -7,6 +8,19 @@ def encode(encode_password):
     res = int(res)
     return res
 
+
+def decoder(password):
+    new_password = ""
+    for element in password:
+        element = int(element)
+        if 0 <= element <= 2:  # If the element is between 0 and 2 (would become negative after subtracting 3)
+            element -= 3  # Subtract 3 from element (e.g. 0 becomes -3)
+            element = 10 - abs(element)  # Subtract the abs value of element from 10 for new digit (e.g. -3 -> 7)
+        else:
+            element -= 3
+        element = str(element)
+        new_password += element
+    return new_password
 
 if __name__ == "__main__":
 
