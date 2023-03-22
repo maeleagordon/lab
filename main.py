@@ -10,6 +10,7 @@ def encode(encode_password):
 
 
 def decoder(password):
+    password = str(password)
     new_password = ""
     for element in password:
         element = int(element)
@@ -21,6 +22,7 @@ def decoder(password):
         element = str(element)
         new_password += element
     return new_password
+
 
 if __name__ == "__main__":
 
@@ -43,7 +45,8 @@ if __name__ == "__main__":
             encode(password)
             print("Your password has been encoded and stored!\n")
         elif option == 2:
-            decoded = encode(password)
-            print(f"The encoded password is {decoded}, and the original password is {password}.\n")
+            encoded = encode(password)
+            decoded = decoder(encoded)
+            print(f"The encoded password is {encoded}, and the original password is {decoded}.\n")
         else:
             continue
